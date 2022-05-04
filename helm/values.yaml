@@ -1,2 +1,4 @@
-imagePrefix: "github.com/robschaap242/"
+imageRegistry: "github.com/robschaap242"
+imagePath: "hermes"
 imageTag: "0.0.1"
+replicas: 1
