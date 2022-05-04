@@ -19,7 +19,6 @@ spec:
     spec:
       containers:
         - name: shell
-          # image: "docker.io/robschaap242/hermes"
           image: {{ .Values.imageRegistry }}/{{ .Values.imagePath }}:{{ .Values.imageTag }}
           ports:
             - containerPort: 80
