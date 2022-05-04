@@ -20,12 +20,12 @@ spec:
       containers:
         - name: shell
           image: {{ .Values.imageRegistry }}/{{ .Values.imagePath }}:{{ .Values.imageTag }}
-          ports:
-            - containerPort: 80
-            - containerPort: 30100
-          resources: {}
-          command: [ "/bin/bash", "-c", "--" ]
-          args: [ "while true; do sleep 30; done;" ]
+          # ports:
+          #   - containerPort: 80
+          #   - containerPort: 30100
+          # resources: {}
+          # command: [ "/bin/bash", "-c", "--" ]
+          # args: [ "while true; do sleep 30; done;" ]
       restartPolicy: Always
       imagePullSecrets:
         - name: regcred
