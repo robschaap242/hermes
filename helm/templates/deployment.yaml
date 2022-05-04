@@ -9,15 +9,14 @@ spec:
   replicas: 1
   strategy:
     type: Recreate
-    spec:
-      selector:
-        matchLabels:
-          app: alpine
-      containers:
-        - image: github.com/robschaap242/hermes.git
-          name: alpine
-      restartPolicy: Always
-      terminationGracePeriodSeconds: 30
+    selector:
+      matchLabels:
+        app: alpine
+    containers:
+      - image: github.com/robschaap242/hermes.git
+        name: alpine
+    restartPolicy: Always
+    terminationGracePeriodSeconds: 30
   template:
     metadata:
       labels:
