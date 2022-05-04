@@ -6,4 +6,7 @@ docker build --pull --rm -f "../Dockerfile" \
     --network host \
     -t hermes:${TAGNAME} .
 
-docker push robschaap242/hermes:tagname
+docker tag hermes:${TAGNAME} robschaap242/hermes:${TAGNAME}
+
+docker login --username ${DOCKERUSER} --password ${DOCKERPASS}
+docker push robschaap242/hermes:${TAGNAME}
