@@ -1,5 +1,5 @@
-imageRegistry: "index.docker.io/v1/robschaap242"
+imageRegistry: "robschaap242"
 imagePath: "hermes"
-imageTag: "0.0.2"
+imageTag: "0.0.3"
 replicas: 1
 namespace: argocd
