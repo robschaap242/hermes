@@ -9,4 +9,5 @@ docker build --pull --rm -f "../Dockerfile" \
 docker tag hermes:${TAGNAME} robschaap242/hermes:${TAGNAME}
 
 docker login --username ${DOCKERUSER} --password ${DOCKERPASS}
+
 docker push robschaap242/hermes:${TAGNAME}
