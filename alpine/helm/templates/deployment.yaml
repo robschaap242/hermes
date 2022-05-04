@@ -30,3 +30,8 @@ spec:
       imagePullSecrets:
         - name: regcred
       terminationGracePeriodSeconds: 30
+
+      volumes:
+        - name: nfs-pvc
+          persistentVolumeClaim:
+            claimName: test-dynamic-volume-claim
