@@ -16,7 +16,7 @@ spec:
     type: Recreate
     spec:
       containers:
-        - image: github.com/robschaap242/hermes
+        - image: github.com/robschaap242/hermes.git
           name: alpine
       restartPolicy: Always
       terminationGracePeriodSeconds: 30
