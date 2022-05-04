@@ -24,7 +24,8 @@ spec:
     spec:
       containers:
         - name: shell
-          image: {{ .Values.imageRegistry }}/{{ .Values.imagePath }}:{{ .Values.imageTag }}
+          image: {{ .Values.imageRegistry }}/{{ .Values.imagePath }}
+          # image: {{ .Values.imageRegistry }}/{{ .Values.imagePath }}:{{ .Values.imageTag }}
           # ports:
           #   - containerPort: 80
           #   - containerPort: 30100
