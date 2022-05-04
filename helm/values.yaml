@@ -1,4 +1,4 @@
-imageRegistry: "robschaap242"
+imageRegistry: "index.docker.io/v1/robschaap242"
 imagePath: "hermes"
 imageTag: "0.0.2"
 replicas: 1
