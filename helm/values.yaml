@@ -1,5 +1,5 @@
 imageRegistry: "github.com/robschaap242"
-imagePath: "hermes"
+imagePath: "hermes.git"
 imageTag: "0.0.1"
 replicas: 1
 namespace: argocd
