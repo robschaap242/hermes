@@ -1,13 +1,11 @@
 #!/bin/bash -ex
 
-TAGNAME="0.0.3"
+TAGNAME="0.0.5"
 
 docker build --pull --rm -f "../Dockerfile" \
     --network host \
     -t hermes:${TAGNAME} .
 
 docker tag hermes:${TAGNAME} robschaap242/hermes:${TAGNAME}
-
-docker login --username ${DOCKERUSER} --password ${DOCKERPASS}
 
 docker push robschaap242/hermes:${TAGNAME}
