@@ -2,7 +2,7 @@
 
 TAGNAME="0.0.5"
 
-docker build --pull --rm -f "../Dockerfile" \
+docker build --pull --rm -f "../Dockerfile-alpine" \
     --network host \
     -t hermes:${TAGNAME} .
 
