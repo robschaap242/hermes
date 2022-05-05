@@ -19,10 +19,6 @@ spec:
         - name: nfs-volume
           persistentVolumeClaim:
             claimName: nfs-pvc
-          hostPath:               # <- the folder on the host machine.
-            path: /root/fileshare
-#       # nodeSelector:     # <- use selector to fix nfs-server on k8s2.zhangqiaoc.com
-#       #   kubernetes.io/hostname: k8s2.zhangqiaoc.com
       containers:
       - name: nfs-server
         image: itsthenetwork/nfs-server-alpine:latest
