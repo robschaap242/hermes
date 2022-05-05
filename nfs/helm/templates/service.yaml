@@ -4,7 +4,7 @@ metadata:
   name: nfs-server
   namespace: argocd
 spec:
-  type: NodePort
+  type: ClusterIP
   selector:
     app: nfs-server
   ports:
