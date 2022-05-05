@@ -1,6 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  labels:
+    app: nfs-server
+  namespace: argocd
   name: nfs-server
 spec:
   replicas: 1
@@ -12,13 +15,19 @@ spec:
       labels:
         app: nfs-server
     spec:
-      # nodeSelector:     # <- use selector to fix nfs-server on k8s2.zhangqiaoc.com
-      #   kubernetes.io/hostname: k8s2.zhangqiaoc.com
+      volumes:
+        - name: nfs-volume
+          persistentVolumeClaim:
+            claimName: nfs-pvc
+          hostPath:               # <- the folder on the host machine.
+            path: /root/fileshare
+#       # nodeSelector:     # <- use selector to fix nfs-server on k8s2.zhangqiaoc.com
+#       #   kubernetes.io/hostname: k8s2.zhangqiaoc.com
       containers:
       - name: nfs-server
         image: itsthenetwork/nfs-server-alpine:latest
         volumeMounts:
-        - name: nfs-storage
+        - name: nfs-volume
           mountPath: /nfsshare
         env:
         - name: SHARED_DIRECTORY
@@ -28,7 +37,7 @@ spec:
           containerPort: 2049   # <- export port
         securityContext:
           privileged: true      # <- privileged mode is mandentory.
-      volumes:
-      - name: nfs-storage  
-        hostPath:               # <- the folder on the host machine.
-          path: /root/fileshare
+#       volumes:
+#       - name: nfs-storage  
+#         hostPath:               # <- the folder on the host machine.
+#           path: /root/fileshare
