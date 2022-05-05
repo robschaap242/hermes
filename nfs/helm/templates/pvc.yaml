@@ -2,7 +2,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   namespace: argocd
-  name: nfs-pvc
+  name: nfs-pv-claim
 spec:
   # storageClassName: nfs-direct
   accessModes:
