@@ -30,10 +30,6 @@ spec:
           value: "/nfsshare"
         ports:
         - name: nfs  
-          containerPort: 2049   # <- export port
+          containerPort: 2049
         securityContext:
-          privileged: true      # <- privileged mode is mandentory.
-#       volumes:
-#       - name: nfs-storage  
-#         hostPath:               # <- the folder on the host machine.
-#           path: /root/fileshare
+          privileged: true 

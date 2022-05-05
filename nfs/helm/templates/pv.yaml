@@ -3,12 +3,11 @@ kind: PersistentVolume
 metadata:
   name: nfs-pv
 spec:
-  storageClassName: nfs
   capacity:
     storage: 10Mi
   accessModes:
-    - ReadWriteMany
-  # persistentVolumeReclaimPolicy: Recycle
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Recycle
   nfs:
     path: "/"
     server: nfs-server
