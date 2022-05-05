@@ -3,7 +3,10 @@ kind: Deployment
 metadata:
   name: nfs-server
 spec:
-  replicas: 1           # <- no more replicas
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nfs-server
   template:
     metadata:
       labels:
