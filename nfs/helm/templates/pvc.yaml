@@ -4,7 +4,7 @@ metadata:
   namespace: argocd
   name: nfs-pvc
 spec:
-  storageClassName: nfs
+  storageClassName: nfs-direct
   accessModes:
     - ReadWriteMany
   resources:
