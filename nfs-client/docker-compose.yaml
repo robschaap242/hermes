@@ -1,0 +1,17 @@
+version: "2.1"
+services:
+  nfs-client:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    container_name: nfs-client
+    restart: unless-stopped
+    privileged: true
+    environment:
+      - SHARE=/data
+      - SERVER=192.168.0.4
+    command: ["tail", "-f", "/dev/null"]
+    # volumes:
+    #   - /home/robschaap/nfs:/data
+
+    # $ docker run -itd --privileged=true --net=host -v vol:/mnt/nfs-1:shared -e SERVER= X.X.X.X -e SHARE=shared_path d3fk/nfs-client

@@ -1,5 +1,5 @@
-imageRegistry: "robschaap242"
-imagePath: "nfs"
-imageTag: "0.0.1"
+# imageRegistry: "robschaap242"
+# imagePath: "nfs"
+# imageTag: "0.0.1"
 replicas: 1
 namespace: argocd

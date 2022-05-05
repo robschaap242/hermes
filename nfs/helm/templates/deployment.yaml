@@ -1,32 +1,31 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nfs
-  namespace: {{ .Values.namespace }}
-  labels:
-    app: nfs
+  name: nfs-server
 spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: nfs
-  strategy:
-    type: Recreate
+  replicas: 1           # <- no more replicas
   template:
     metadata:
       labels:
-        app: nfs
+        app: nfs-server
     spec:
+      # nodeSelector:     # <- use selector to fix nfs-server on k8s2.zhangqiaoc.com
+      #   kubernetes.io/hostname: k8s2.zhangqiaoc.com
       containers:
-        - name: shell
-          image: {{ .Values.imageRegistry }}/{{ .Values.imagePath }}:{{ .Values.imageTag }}
-          ports:
-            - containerPort: 80
-            - containerPort: 30100
-          resources: {}
-          command: [ "/bin/bash", "-c", "--" ]
-          args: [ "while true; do sleep 30; done;" ]
-      restartPolicy: Always
-      imagePullSecrets:
-        - name: regcred
-      terminationGracePeriodSeconds: 30
+      - name: nfs-server
+        image: itsthenetwork/nfs-server-alpine:latest
+        volumeMounts:
+        - name: nfs-storage
+          mountPath: /nfsshare
+        env:
+        - name: SHARED_DIRECTORY
+          value: "/nfsshare"
+        ports:
+        - name: nfs  
+          containerPort: 2049   # <- export port
+        securityContext:
+          privileged: true      # <- privileged mode is mandentory.
+      volumes:
+      - name: nfs-storage  
+        hostPath:               # <- the folder on the host machine.
+          path: /root/fileshare
