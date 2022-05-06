@@ -24,10 +24,10 @@ spec:
         image: itsthenetwork/nfs-server-alpine:latest
         volumeMounts:
         - name: nfs-volume
-          mountPath: /nfs-share
+          mountPath: nfs-share
         env:
         - name: SHARED_DIRECTORY
-          value: "/nfs-share"
+          value: "nfs-share"
         ports:
         - name: "nfs-port"  
           containerPort: 2049
