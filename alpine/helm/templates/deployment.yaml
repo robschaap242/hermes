@@ -17,9 +17,16 @@ spec:
       labels:
         app: alpine
     spec:
+      volumes:
+        - name: nfs-volume
+          persistentVolumeClaim:
+            claimName: nfs-pv-claim
       containers:
         - name: shell
           image: {{ .Values.imageRegistry }}/{{ .Values.imagePath }}:{{ .Values.imageTag }}
+          volumeMounts:
+            - name: nfs-volume
+              mountPath: /nfs-client-share
           ports:
             - containerPort: 80
             - containerPort: 30100
