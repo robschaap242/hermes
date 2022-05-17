@@ -19,10 +19,10 @@ spec:
       #   - 
       containers:
       - name: bt-nfs-client
-        image: {{ .Values.imageRegistry }}/{{ .Values.imagePath }}
-        env:
-        - name: SHARED_DIRECTORY
-          value: "nfs-share"
+        image: robschaap242/hermes-nfs-client:latest
+        # env:
+        # - name: SHARED_DIRECTORY
+        #   value: "nfs-share"
         ports:
         - name: "nfs-port"  
           containerPort: 2049
