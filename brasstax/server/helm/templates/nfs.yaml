@@ -1,0 +1,70 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: bt-service
+  namespace: brasstax
+spec:
+  type: ClusterIP
+  selector:
+    app: bt-nfs-service
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 9376
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: bt-nfs-box
+  namespace: brasstax
+  name: bt-nfs-box-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bt-nfs-box
+  template:
+    metadata:
+      labels:
+        app: bt-nfs-box
+    spec:
+      containers:
+      - name: bt-nfs-box
+        image: itsthenetwork/nfs-server-alpine:latest
+        ports:
+        - name: "nfs-port"
+        - containerPort: 2049
+        volumeMounts:
+        - name: nfs-volume
+          mountPath: nfs-share
+        securityContext:
+          privileged: true 
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  namespace: brasstax
+  name: bt-pv-claim
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 10Mi
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: bt-shared-volume
+  namespace: brasstax
+spec:
+  capacity:
+    storage: 10Mi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Recycle
+  nfs:
+    path: "/"
+    server: bt-nfs-box
