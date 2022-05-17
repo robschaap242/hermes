@@ -7,7 +7,7 @@ metadata:
 spec:
   type: ClusterIP
   selector:
-    app: bt-nfs-service
+    app: bt-nfs-box
   ports:
     - protocol: TCP
       port: 80
