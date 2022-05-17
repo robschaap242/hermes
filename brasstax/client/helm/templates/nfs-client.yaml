@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: bt-nfs-client
+  namespace: brasstax
+  name: bt-nfs-client-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bt-nfs-client
+  template:
+    metadata:
+      labels:
+        app: bt-nfs-client
+    spec:
+      # volumes:
+      #   - 
+      containers:
+      - name: bt-nfs-client
+        image: {{ .Values.imageRegistry }}/{{ .Values.imagePath }}
+        env:
+        - name: SHARED_DIRECTORY
+          value: "nfs-share"
+        ports:
+        - name: "nfs-port"  
+          containerPort: 2049
+        securityContext:
+          privileged: true
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: bt-nfs-client-service
+  namespace: brasstax
+spec:
+  type: NodePort
+  selector:
+    app: bt-nfs-client
+  ports:
+    - name: "nfs-port"
+      port: 80
+      protocol: TCP
