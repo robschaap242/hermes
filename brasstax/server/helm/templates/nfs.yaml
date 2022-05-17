@@ -40,7 +40,11 @@ spec:
         - name: bt-shared-volume
           mountPath: nfs-share
         securityContext:
-          privileged: true 
+          privileged: true
+      volumes:
+        - name: bt-shared-volume
+          persistentVolumeClaim:
+            claimName: bt-pv-claim
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
