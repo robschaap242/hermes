@@ -16,7 +16,7 @@ spec:
         app: nfs-client
     spec:
       volumes:
-        - name: pvc-d6abc665-a04c-4165-b18c-bf2010c428f3
+        - name: nfs-volume
           nfs:
             server: nfs-server
             path: /nfs-share
@@ -24,11 +24,11 @@ spec:
       - name: nfs-client
         image: robschaap242/hermes-nfs-client:latest
         volumeMounts:
-        - name: pvc-d6abc665-a04c-4165-b18c-bf2010c428f3
-          mountPath: nfsdata
+        - name: nfs-volume
+          mountPath: /nfs-share
         env:
         - name: SHARED_DIRECTORY
-          value: "nfsdata"
+          value: "/nfs-share"
         ports:
         - name: "nfs-port"  
           containerPort: 2049
