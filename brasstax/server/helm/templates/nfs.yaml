@@ -37,7 +37,7 @@ spec:
         - name: "nfs-port"
           containerPort: 2049
         volumeMounts:
-        - name: nfs-volume
+        - name: bt-shared-volume
           mountPath: nfs-share
         securityContext:
           privileged: true 
