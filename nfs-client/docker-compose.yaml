@@ -9,9 +9,5 @@ services:
     privileged: true
     environment:
       - SHARE=/data
-      - SERVER=192.168.0.4
+      - SERVER=nfs-server.ola-zeus:2049
     command: ["tail", "-f", "/dev/null"]
-    # volumes:
-    #   - /home/robschaap/nfs:/data
-
-    # $ docker run -itd --privileged=true --net=host -v vol:/mnt/nfs-1:shared -e SERVER= X.X.X.X -e SHARE=shared_path d3fk/nfs-client

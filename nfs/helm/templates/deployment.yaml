@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   labels:
     app: nfs-server
-  namespace: argocd
+  namespace: ola-zeus
   name: nfs-server
 spec:
   replicas: 1

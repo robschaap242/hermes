@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: nfs-client
+  namespace: ola-zeus
+  name: nfs-client
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nfs-client
+  template:
+    metadata:
+      labels:
+        app: nfs-client
+    spec:
+      volumes:
+        - name: pvc-446b7f4e-f139-4a32-b3f1-777e0972a902
+          nfs:
+            server: nfs-server
+            path: /nfs-share
+      containers:
+      - name: nfs-client
+        image: robschaap242/hermes-nfs-client:latest
+        volumeMounts:
+        - name: pvc-446b7f4e-f139-4a32-b3f1-777e0972a902
+          mountPath: nfsdata
+        env:
+        - name: SHARED_DIRECTORY
+          value: "nfsdata"
+        ports:
+        - name: "nfs-port"  
+          containerPort: 2049
+        securityContext:
+          privileged: true 
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nfs-client-srv
+  namespace: ola-zeus
+spec:
+  type: NodePort
+  selector:
+    app: nfs-client
+  ports:
+    - name: "nfs-port"
+      port: 2049
+      targetPort: 2049
+      protocol: TCP

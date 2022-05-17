@@ -1,0 +1,11 @@
+#!/bin/bash -ex
+
+TAGNAME="0.0.1"
+
+docker build --pull --rm -f "../Dockerfile" \
+    --network host \
+    -t hermes-client:${TAGNAME} .
+
+docker tag hermes-client:${TAGNAME} robschaap242/hermes-nfs-client:${TAGNAME}
+
+docker push robschaap242/hermes-nfs-client:${TAGNAME}
