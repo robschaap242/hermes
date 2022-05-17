@@ -1,5 +1,5 @@
-imageRegistry: "robschaap242"
-imagePath: "nfs"
-imageTag: "0.0.2"
+imageRegistry: "itsthenetwork"
+imagePath: "nfs-server-alpine:latest"
+imageTag: "0.0.3"
 replicas: 1
-namespace: argocd
+namespace: ola-zeus
