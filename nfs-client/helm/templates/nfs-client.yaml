@@ -16,7 +16,7 @@ spec:
         app: nfs-client
     spec:
       volumes:
-        - name: nfs-volume
+        - name: nfs-pv
           nfs:
             server: nfs-server
             path: /nfs-share
@@ -24,7 +24,7 @@ spec:
       - name: nfs-client
         image: robschaap242/hermes-nfs-client:latest
         volumeMounts:
-        - name: nfs-volume
+        - name: nfs-pv
           mountPath: /nfs-share
         env:
         - name: SHARED_DIRECTORY

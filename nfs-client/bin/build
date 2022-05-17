@@ -1,6 +1,6 @@
 #!/bin/bash -ex
 
-TAGNAME="0.0.1"
+TAGNAME="0.0.2"
 
 docker build --pull --rm -f "../Dockerfile" \
     --network host \
