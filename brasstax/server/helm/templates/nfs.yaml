@@ -41,6 +41,9 @@ spec:
           mountPath: nfs-share
         securityContext:
           privileged: true
+        env:
+        - name: SHARED_DIRECTORY
+          value: "nfs-share"
       volumes:
         - name: bt-shared-volume
           persistentVolumeClaim:
