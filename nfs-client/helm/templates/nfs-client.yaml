@@ -19,13 +19,13 @@ spec:
         - name: nfs-pv
           nfs:
             server: nfs-server
-            path: /nfs-share
+            path: /
       containers:
       - name: nfs-client
         image: robschaap242/hermes-nfs-client:latest
         volumeMounts:
         - name: nfs-pv
-          mountPath: /nfs-share
+          mountPath: /
         env:
         - name: SHARED_DIRECTORY
           value: "/nfs-share"
