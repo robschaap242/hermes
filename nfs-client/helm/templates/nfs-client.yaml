@@ -19,7 +19,7 @@ spec:
         - name: nfs-pv
           nfs:
             server: nfs-server
-            path: /
+          path: /
       containers:
       - name: nfs-client
         image: robschaap242/hermes-nfs-client:latest
