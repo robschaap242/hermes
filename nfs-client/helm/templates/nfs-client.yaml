@@ -16,7 +16,7 @@ spec:
         app: nfs-client
     spec:
       volumes:
-        - name: pvc-446b7f4e-f139-4a32-b3f1-777e0972a902
+        - name: pvc-d6abc665-a04c-4165-b18c-bf2010c428f3
           nfs:
             server: nfs-server
             path: /nfs-share
@@ -24,7 +24,7 @@ spec:
       - name: nfs-client
         image: robschaap242/hermes-nfs-client:latest
         volumeMounts:
-        - name: pvc-446b7f4e-f139-4a32-b3f1-777e0972a902
+        - name: pvc-d6abc665-a04c-4165-b18c-bf2010c428f3
           mountPath: nfsdata
         env:
         - name: SHARED_DIRECTORY
