@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: bt-nfs-client-bare
+  namespace: brasstax
+  name: bt-nfs-client-bare-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bt-nfs-client-bare
+  template:
+    metadata:
+      labels:
+        app: bt-nfs-client-bare
+    spec:
+      # volumes:
+      #   - name: bt-nfs-volume
+      #     nfs:
+      #       server: bt-nfs-box
+      #       path: /
+      containers:
+      - name: bt-nfs-client-bare
+        image: robschaap242/hermes-nfs-client-bare:0.0.1
+        # env:
+        # - name: SERVER
+        #   value: 172.17.0.13
+        # - name: SHARE
+        #   value: /nfs-share
+        # ports:
+        # - name: "nfs-port"  
+        #   containerPort: 2049
+        # securityContext:
+        #   privileged: true
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: bt-nfs-client-bare-service
+  namespace: brasstax
+spec:
+  type: NodePort
+  selector:
+    app: bt-nfs-client-bare
+  ports:
+    - name: "nfs-port"
+      port: 2049
+      protocol: TCP
