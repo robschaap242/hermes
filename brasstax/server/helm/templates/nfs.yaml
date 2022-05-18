@@ -43,7 +43,7 @@ spec:
           privileged: true
         env:
         - name: SHARED_DIRECTORY
-          value: "nfs-share"
+          value: /nfs-share
       volumes:
         - name: bt-shared-volume
           persistentVolumeClaim:
