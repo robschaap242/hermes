@@ -36,7 +36,6 @@ spec:
         ports:
         - name: "nfs-port"
           containerPort: 2049
-          targetPort: 2049
         volumeMounts:
         - name: bt-shared-volume
           mountPath: nfs-share
