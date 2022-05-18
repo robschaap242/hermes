@@ -1,6 +1,6 @@
 FROM d3fk/nfs-client
 
-ENV SERVER=bt-nfs-box
+ENV SERVER=172.17.0.13
 ENV SHARE=nfs-share
 
 # ENTRYPOINT [ "/bin/bash", "-c", "--", "while true; do sleep 30; done;" ]
