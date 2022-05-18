@@ -5,7 +5,7 @@ metadata:
   name: bt-nfs-server-service
   namespace: brasstax
 spec:
-  type: ClusterIP
+  type: NodePort
   selector:
     app: bt-nfs-box
   ports:
