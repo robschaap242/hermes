@@ -15,14 +15,19 @@ spec:
       labels:
         app: bt-nfs-client
     spec:
-      # volumes:
-      #   - 
+      volumes:
+        - name: bt-nfs-volume
+          nfs:
+            server: bt-nfs-box
+          path: /
       containers:
       - name: bt-nfs-client
         image: robschaap242/hermes-nfs-client:0.0.3
-        # env:
-        # - name: SHARED_DIRECTORY
-        #   value: "nfs-share"
+        env:
+        - name: SERVER
+          value: "bt-nfs-box"
+        - name: SHARE
+          value: "bt-shared-volume"
         ports:
         - name: "nfs-port"  
           containerPort: 2049
