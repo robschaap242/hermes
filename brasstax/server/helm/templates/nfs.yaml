@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: bt-service
+  name: bt-nfs-server-service
   namespace: brasstax
 spec:
   type: ClusterIP
@@ -12,6 +12,8 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 9376
+    - port: 2049
+      protocol: TCP
 ---
 apiVersion: apps/v1
 kind: Deployment

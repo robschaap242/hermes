@@ -47,3 +47,6 @@ spec:
     - name: "nfs-port"
       port: 2049
       protocol: TCP
+    - protocol: TCP
+      port: 80
+      targetPort: 9376
