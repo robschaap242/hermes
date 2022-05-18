@@ -10,7 +10,7 @@ spec:
     app: bt-nfs-box
   ports:
     - protocol: TCP
-      port: 80
+      port: 2049
       targetPort: 9376
 ---
 apiVersion: apps/v1
