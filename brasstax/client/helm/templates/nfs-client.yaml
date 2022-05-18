@@ -22,10 +22,10 @@ spec:
             path: /
       containers:
       - name: bt-nfs-client
-        image: robschaap242/hermes-nfs-client:0.0.4
+        image: robschaap242/hermes-nfs-client:0.0.5
         env:
         - name: SERVER
-          value: 172.17.0.13
+          value: 10.103.32.174
         - name: SHARE
           value: /nfs-share
         ports:

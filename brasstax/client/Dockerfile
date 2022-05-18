@@ -1,6 +1,6 @@
 FROM d3fk/nfs-client
 
-ENV SERVER=172.17.0.13
+ENV SERVER=10.103.32.174
 ENV SHARE=nfs-share
 ENV FSTYPE=nfs4
 
