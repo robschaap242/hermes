@@ -47,13 +47,13 @@ spec:
       volumes:
         - name: bt-shared-volume
           persistentVolumeClaim:
-            claimName: bt-pv-claim
+            claimName: bt-pv-claim-new
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   namespace: brasstax
-  name: bt-pv-claim
+  name: bt-pv-claim-new
 spec:
   accessModes:
     - ReadWriteMany
