@@ -25,9 +25,9 @@ spec:
         image: robschaap242/hermes-nfs-client:0.0.3
         env:
         - name: SERVER
-          value: "bt-nfs-box"
+          value: 172.17.0.13
         - name: SHARE
-          value: "bt-shared-volume"
+          value: /nfs-share
         ports:
         - name: "nfs-port"  
           containerPort: 2049
